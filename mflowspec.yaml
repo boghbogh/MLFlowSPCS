@@ -1,0 +1,18 @@
+spec:
+  containers:
+  - name: mlflow
+    image: sfsenorthamerica-llm-mlfcto.registry.snowflakecomputing.com/mahdi_playground/mlflow_test/mlflow_image/mflow-spcs:latest
+    volumeMounts:
+    - name: mlruns-volume
+      mountPath: /mlflow/mlruns
+    - name: artifact-store-volume
+      mountPath: /mlartifacts
+  endpoints:
+  - name: snowpark-mlflow
+    port: 5000
+    public: true
+  volumes:
+  - name: mlruns-volume
+    source: "@MLFLOW_STAGE/mlruns"
+  - name: artifact-store-volume
+    source: "@MLFLOW_STAGE/artifacts_store"

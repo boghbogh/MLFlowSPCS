@@ -1,0 +1,12 @@
+snow connection test --connection FCTO
+
+snow spcs image-registry login --connection FCTO
+
+docker build --platform=linux/amd64 -t maskari/mflow-spcs:latest .
+sfsenorthamerica-llm-mlfcto.registry.snowflakecomputing.com/mahdi_playground/mlflow_test/mlflow_image
+
+
+
+docker tag maskari/mflow-spcs:latest sfsenorthamerica-llm-mlfcto.registry.snowflakecomputing.com/mahdi_playground/mlflow_test/mlflow_image/mflow-spcs:latest
+docker push sfsenorthamerica-llm-mlfcto.registry.snowflakecomputing.com/mahdi_playground/mlflow_test/mlflow_image/mflow-spcs:latest
+
